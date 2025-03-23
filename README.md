@@ -26,7 +26,7 @@ import 'sortable-lite/sortable-table.css';
 
 This adds sort arrows and basic styling. You can override or extend it as needed.
 
-## Example HTML
+## 🔁 Example HTML
 
 ```html
 <link rel="stylesheet" href="sortable-table.css" />
