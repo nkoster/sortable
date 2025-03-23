@@ -1,10 +1,25 @@
 {
-  "name": "sortable",
-  "version": "1.0.0",
-  "description": "Simple JS module to make HTML tables sortable by clicking headers",
+  "name": "sortable-lite",
+  "version": "1.0.1",
+  "description": "Simple JavaScript module to make HTML tables sortable",
   "main": "index.js",
   "type": "module",
-  "keywords": ["sortable", "table", "javascript", "html", "sort"],
+  "files": [
+    "index.js",
+    "sortable-table.css"
+  ],
+  "keywords": [
+    "sortable",
+    "table",
+    "javascript",
+    "html",
+    "sorting",
+    "vanilla"
+  ],
   "author": "Niels Koster",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nkoster/sortable.git"
+  }
 }
