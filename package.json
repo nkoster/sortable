@@ -1,6 +1,6 @@
 {
   "name": "sortable-lite",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple JavaScript module to make HTML tables sortable",
   "main": "index.js",
   "type": "module",
