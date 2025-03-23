@@ -6,23 +6,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nkoster/sortable/sortable-table.css">
 </head>
 <body>
-<table id="table-sort" class="sortable-table">
+<table class="sortable-table">
     <thead>
     <tr>
-        <td>RED</td>
-        <td>GREEN</td>
-        <td>BLUE</td>
+        <td>Name</td>
+        <td>Score</td>
     </tr>
     </thead>
     <tbody>
-    <tr><td>string 1</td><td>4</td><td>101</td></tr>
-    <tr><td>string 2</td><td>21</td><td>200</td></tr>
-    <tr><td>string 3</td><td>18</td><td>98</td></tr>
+    <tr><td>Alice</td><td>42</td></tr>
+    <tr><td>Bob</td><td>13</td></tr>
+    <tr><td>Charlie</td><td>77</td></tr>
     </tbody>
 </table>
 <script type="module">
   import { makeTableSortable } from 'https://cdn.jsdelivr.net/gh/nkoster/sortable/index.js';
-  makeTableSortable(document.getElementById("table-sort"));
+  makeTableSortable(document.querySelector('table.sortable-table'));
 </script>
 </body>
 </html>
