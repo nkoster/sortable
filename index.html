@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>table</title>
+    <meta charset="UTF-8">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        thead td::after {
+            display: inline-block;
+            width: 1em;
+            text-align: center;
+            content: " ●"; /* default, unsorted */
+            color: #ccc;
+        }
+        thead td.sorted-asc::after {
+            content: "▲ ";
+        }
+        thead td.sorted-desc::after {
+            content: "▼ ";
+        }
+        td {
+            padding: 1rem;
+            text-align: right;
+        }
+        tbody td::after {
+            content: " ●";
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<table id="table-sort">
+    <thead>
+    <tr>
+        <td>
+            RED
+        </td>
+        <td>
+            GREEN
+        </td>
+        <td>
+            BLUE
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            string 1
+        </td>
+        <td>
+            4
+        </td>
+        <td>
+            101
+        </td>
+    </tr>
+    <tr>
+        <td>
+            string 2
+        </td>
+        <td>
+            21
+        </td>
+        <td>
+            200
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script>
+  const table = document.getElementById("table-sort");
+  const headers = Array.from(table.querySelectorAll("thead td")).map(td =>
+    td.textContent.trim()
+  );
+
+  function getTableData() {
+    return Array.from(table.querySelectorAll("tbody tr")).map(row => {
+      const cells = Array.from(row.querySelectorAll("td")).map(td =>
+        td.textContent.trim()
+      );
+      return Object.fromEntries(headers.map((key, i) => [key, cells[i]]));
+    });
+  }
+
+  function renderTable(data) {
+    const tbody = table.querySelector("tbody");
+    tbody.innerHTML = "";
+
+    data.forEach(rowData => {
+      const row = document.createElement("tr");
+      headers.forEach(header => {
+        const td = document.createElement("td");
+        td.textContent = rowData[header];
+        row.appendChild(td);
+      });
+      tbody.appendChild(row);
+    });
+  }
+
+  let currentSort = {
+    column: null,
+    direction: null // "asc" | "desc" | null
+  };
+
+  function cycleSortDirection(currentDirection) {
+    switch (currentDirection) {
+      case null: return "asc";
+      case "asc": return "desc";
+      case "desc": return null;
+    }
+  }
+
+  function sortData(data, column, direction) {
+    if (!direction) return [...originalData];
+
+    const isNumeric = data.every(row => {
+      const val = row[column];
+      return val !== "" && !isNaN(Number(val));
+    });
+
+    return [...data].sort((a, b) => {
+      const aVal = rowValue(a[column]);
+      const bVal = rowValue(b[column]);
+
+      if (isNumeric) {
+        return direction === "asc" ? aVal - bVal : bVal - aVal;
+      } else {
+        return direction === "asc"
+          ? aVal.localeCompare(bVal, "nl", { sensitivity: "base" })
+          : bVal.localeCompare(aVal, "nl", { sensitivity: "base" });
+      }
+    });
+
+    function rowValue(val) {
+      return isNumeric ? Number(val) : String(val);
+    }
+  }
+
+  const headerCells = table.querySelectorAll("thead td");
+  let originalData = getTableData();
+
+  headerCells.forEach((cell, columnIndex) => {
+    cell.addEventListener("click", () => {
+      const columnName = headers[columnIndex];
+
+      // Cycle: none → asc → desc → none
+      if (currentSort.column === columnName) {
+        currentSort.direction = cycleSortDirection(currentSort.direction);
+      } else {
+        currentSort.column = columnName;
+        currentSort.direction = "asc";
+      }
+
+      const sortedData = sortData(originalData, currentSort.column, currentSort.direction);
+      renderTable(sortedData);
+
+      headerCells.forEach(c => c.classList.remove("sorted-asc", "sorted-desc"));
+      if (currentSort.direction === "asc") {
+        cell.classList.add("sorted-asc");
+      } else if (currentSort.direction === "desc") {
+        cell.classList.add("sorted-desc");
+      }
+    });
+  });
+
+  renderTable(originalData);
+</script>
+</html>
