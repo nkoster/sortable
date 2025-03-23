@@ -19,13 +19,25 @@
             width: 1em;
             text-align: center;
             content: " ●"; /* default, unsorted */
-            color: #ccc;
+            color: #f0f0f0;
+            font-size: .8rem;
         }
         thead td.sorted-asc::after {
             content: "▲ ";
+            color: darkorange;
+            transform: translateY(-3px);
+            text-shadow: black 0px 1px 1px;
+            font-size: .8rem;
         }
         thead td.sorted-desc::after {
             content: "▼ ";
+            color: darkorange;
+            transform: translateY(-2px);
+            text-shadow: black 0px 1px 1px;
+            font-size: .8rem;
+        }
+        thead tr {
+            background-color: #f0f0f0;
         }
         td {
             padding: 1rem;
@@ -34,6 +46,7 @@
         tbody td::after {
             content: " ●";
             color: white;
+            font-size: .8rem;
         }
     </style>
 </head>
