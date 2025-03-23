@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sortable Table Example</title>
+    <link rel="stylesheet" href="./sortable-table.css">
+</head>
+<body>
+<table id="table-sort" class="sortable-table">
+    <thead>
+    <tr>
+        <td>RED</td>
+        <td>GREEN</td>
+        <td>BLUE</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>string 1</td><td>4</td><td>101</td></tr>
+    <tr><td>string 2</td><td>21</td><td>200</td></tr>
+    <tr><td>string 3</td><td>18</td><td>98</td></tr>
+    </tbody>
+</table>
+<script type="module">
+  import { makeTableSortable } from './index.js';
+  makeTableSortable(document.getElementById("table-sort"));
+</script>
+</body>
+</html>

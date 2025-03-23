@@ -1,0 +1,10 @@
+{
+  "name": "sortable",
+  "version": "1.0.0",
+  "description": "Simple JS module to make HTML tables sortable by clicking headers",
+  "main": "index.js",
+  "type": "module",
+  "keywords": ["sortable", "table", "javascript", "html", "sort"],
+  "author": "Niels Koster",
+  "license": "MIT"
+}

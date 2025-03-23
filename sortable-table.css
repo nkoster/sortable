@@ -1,0 +1,44 @@
+.sortable-table {
+    width: 40rem;
+}
+.sortable-table, .sortable-table th, .sortable-table td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.sortable-table thead td {
+    cursor: pointer;
+}
+.sortable-table thead td::after {
+    display: inline-block;
+    width: 1em;
+    text-align: center;
+    content: "●";
+    color: #f0f0f0;
+    font-size: .8rem;
+}
+.sortable-table thead td.sorted-asc::after {
+    content: "▲";
+    color: darkorange;
+    transform: translate(5px, -4px);
+    text-shadow: black 0px 1px 1px;
+    font-size: .8rem;
+}
+.sortable-table thead td.sorted-desc::after {
+    content: "▼";
+    color: darkorange;
+    transform: translate(5px, -3px);
+    text-shadow: black 0px 1px 1px;
+    font-size: .8rem;
+}
+.sortable-table thead tr {
+    background-color: #f0f0f0;
+}
+.sortable-table td {
+    padding: 1rem;
+    text-align: right;
+}
+.sortable-table tbody td::after {
+    content: "●";
+    color: white;
+    font-size: .8rem;
+}
