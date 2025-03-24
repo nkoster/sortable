@@ -39,8 +39,8 @@ This adds sort arrows and basic styling. You can override or extend it as needed
 <table class="sortable-table">
   <thead>
     <tr>
-      <td>Name</td>
-      <td>Score</td>
+      <th>Name</th>
+      <th>Score</th>
     </tr>
   </thead>
   <tbody>
