@@ -7,9 +7,7 @@ export function makeTableSortable(table) {
 
   function getTableData() {
     return Array.from(table.querySelectorAll("tbody tr")).map(row => {
-      const cells = Array.from(row.querySelectorAll("td")).map(td =>
-        td.textContent.trim()
-      );
+      const cells = Array.from(row.querySelectorAll("td")).map(td => td.innerHTML);
       return Object.fromEntries(headers.map((key, i) => [key, cells[i]]));
     });
   }
@@ -22,7 +20,7 @@ export function makeTableSortable(table) {
       const row = document.createElement("tr");
       headers.forEach(header => {
         const td = document.createElement("td");
-        td.textContent = rowData[header];
+        td.innerHTML = rowData[header];
         row.appendChild(td);
       });
       tbody.appendChild(row);
