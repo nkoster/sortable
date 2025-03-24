@@ -8,7 +8,7 @@ Lightweight JavaScript module to make any HTML `<table>` sortable by clicking co
 - ✅ Easily styleable
 - ✅ Tiny footprint
 
-Example page: https://nkoster.github.io/sortable/example.html
+[Live demo](https://nkoster.github.io/sortable/example.html)
 
 ---
 
