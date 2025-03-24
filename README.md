@@ -1,5 +1,9 @@
 # sortable-lite
 
+![npm](https://img.shields.io/npm/v/sortable-lite)
+![gzip size](https://img.shields.io/bundlephobia/minzip/sortable-lite)
+![license](https://img.shields.io/npm/l/sortable-lite)
+
 Lightweight JavaScript module to make any HTML `<table>` sortable by clicking column headers.
 
 - ✅ No dependencies
