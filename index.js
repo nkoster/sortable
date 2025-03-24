@@ -1,6 +1,6 @@
 export function makeTableSortable(table) {
-  const headers = Array.from(table.querySelectorAll("thead td")).map(td =>
-    td.textContent.trim()
+  const headers = Array.from(table.querySelectorAll("thead th")).map(th =>
+    th.textContent.trim()
   );
 
   let originalData = getTableData();
@@ -57,7 +57,7 @@ export function makeTableSortable(table) {
     });
   }
 
-  const headerCells = table.querySelectorAll("thead td");
+  const headerCells = table.querySelectorAll("thead th");
   let currentSort = { column: null, direction: null };
 
   headerCells.forEach((cell, columnIndex) => {

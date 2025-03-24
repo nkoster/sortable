@@ -5,10 +5,12 @@
     border: 1px solid black;
     border-collapse: collapse;
 }
-.sortable-table thead td {
+.sortable-table thead th {
     cursor: pointer;
+    padding: .6rem;
+    text-align: right;
 }
-.sortable-table thead td::after {
+.sortable-table thead th::after {
     display: inline-block;
     width: 1em;
     text-align: center;
@@ -16,18 +18,18 @@
     color: #f0f0f0;
     font-size: .8rem;
 }
-.sortable-table thead td.sorted-asc::after {
+.sortable-table thead th.sorted-asc::after {
     content: "▲";
     color: darkorange;
     transform: translate(5px, -4px);
-    text-shadow: black 0px 1px 1px;
+    text-shadow: black 0 1px 1px;
     font-size: .8rem;
 }
-.sortable-table thead td.sorted-desc::after {
+.sortable-table thead th.sorted-desc::after {
     content: "▼";
     color: darkorange;
     transform: translate(5px, -3px);
-    text-shadow: black 0px 1px 1px;
+    text-shadow: black 0 1px 1px;
     font-size: .8rem;
 }
 .sortable-table thead tr {
