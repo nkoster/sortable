@@ -1,9 +1,24 @@
-export function makeTableSortable(table) {
-  const headers = Array.from(table.querySelectorAll("thead th")).map(th =>
-    th.textContent.trim()
-  );
+export function makeTableSortable(table, options = {}) {
+
+  const allowUnsorted = options.allowUnsorted === true;
+
+  const headers = Array.from(table.querySelectorAll("thead th"))
+    .map(th => th.textContent.trim());
 
   let originalData = getTableData();
+
+  let currentSort = { column: null, direction: null };
+
+  if (!allowUnsorted) {
+    // Start with "asc" sorting in the first column.
+    const firstTH = document.querySelector('.sortable-table thead th');
+    if (firstTH) {
+      firstTH.classList.add('sorted-asc');
+    }
+    const firstColumnName = headers[0];
+    currentSort = { column: firstColumnName, direction: "asc" };
+    originalData = sortData(originalData, firstColumnName, "asc");
+  }
 
   function getTableData() {
     return Array.from(table.querySelectorAll("tbody tr")).map(row => {
@@ -28,15 +43,25 @@ export function makeTableSortable(table) {
   }
 
   function cycleSortDirection(currentDirection) {
-    switch (currentDirection) {
-      case null: return "asc";
-      case "asc": return "desc";
-      case "desc": return null;
+    if (allowUnsorted) {
+      switch (currentDirection) {
+        case null: return "asc";
+        case "asc": return "desc";
+        case "desc": return null;
+      }
+    } else {
+      switch (currentDirection) {
+        case "asc": return "desc";
+        case "desc": return "asc";
+      }
     }
   }
 
   function sortData(data, column, direction) {
-    if (!direction) return [...originalData];
+
+    if (allowUnsorted) {
+      if (!direction) return [...originalData];
+    }
 
     const isNumeric = data.every(row => {
       const val = row[column];
@@ -55,13 +80,15 @@ export function makeTableSortable(table) {
           : bVal.localeCompare(aVal, "nl", { sensitivity: "base" });
       }
     });
+
   }
 
   const headerCells = table.querySelectorAll("thead th");
-  let currentSort = { column: null, direction: null };
 
   headerCells.forEach((cell, columnIndex) => {
+
     cell.addEventListener("click", () => {
+
       const columnName = headers[columnIndex];
 
       if (currentSort.column === columnName) {
@@ -80,7 +107,9 @@ export function makeTableSortable(table) {
       } else if (currentSort.direction === "desc") {
         cell.classList.add("sorted-desc");
       }
+
     });
+
   });
 
   renderTable(originalData);
