@@ -9,8 +9,8 @@
 <table class="sortable-table">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Score</th>
+        <th class="sorted-default">Name</th>
+        <th class="sorted-default">Score</th>
     </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
 </table>
 <script type="module">
   import { makeTableSortable } from 'https://cdn.jsdelivr.net/gh/nkoster/sortable/index.js';
-  makeTableSortable(document.querySelector('table.sortable-table'));
+  makeTableSortable(document.querySelector('table.sortable-table'), { allowUnsorted: true });
 </script>
 </body>
 </html>
