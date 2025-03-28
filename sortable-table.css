@@ -1,46 +1,47 @@
+.text-align-right {
+	text-align: right;
+}
 .sortable-table {
-    width: 40rem;
+	width: 30rem;
 }
 .sortable-table, .sortable-table th, .sortable-table td {
-    border: 1px solid black;
-    border-collapse: collapse;
+	border: 1px solid black;
+	border-collapse: collapse;
 }
 .sortable-table thead th {
-    cursor: pointer;
-    padding: .6rem;
-    text-align: right;
+	cursor: pointer;
+	padding: .6rem;
 }
-.sortable-table thead th::after {
-    display: inline-block;
-    width: 1em;
-    text-align: center;
-    content: "●";
-    color: #f0f0f0;
-    font-size: .8rem;
+.sortable-table thead th {
+	position: relative;
+}
+.sortable-table thead th.sorted-default::after {
+	content: url(images/symb_default.gif);
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	display: inline-block;
 }
 .sortable-table thead th.sorted-asc::after {
-    content: "▲";
-    color: darkorange;
-    transform: translate(5px, -4px);
-    text-shadow: black 0 1px 1px;
-    font-size: .8rem;
+	content: url(images/symb_up.gif);
+	position: absolute;
+	right: 0;
+	top: 44%;
+	transform: translateY(-50%);
+	display: inline-block;
 }
 .sortable-table thead th.sorted-desc::after {
-    content: "▼";
-    color: darkorange;
-    transform: translate(5px, -3px);
-    text-shadow: black 0 1px 1px;
-    font-size: .8rem;
+	content: url(images/symb_down.gif);
+	position: absolute;
+	right: 0;
+	top: 44%;
+	transform: translateY(-50%);
+	display: inline-block;
 }
 .sortable-table thead tr {
-    background-color: #f0f0f0;
+	background-color: #f0f0f0;
 }
-.sortable-table td {
-    padding: 1rem;
-    text-align: right;
-}
-.sortable-table tbody td::after {
-    content: "●";
-    color: white;
-    font-size: .8rem;
+.sortable-table tbody td {
+	padding: .7rem;
 }
