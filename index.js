@@ -22,7 +22,10 @@ export function makeTableSortable(table, options = {}) {
 
   function getTableData() {
     return Array.from(table.querySelectorAll("tbody tr")).map(row => {
-      const cells = Array.from(row.querySelectorAll("td")).map(td => td.innerHTML);
+      const cells = Array.from(row.querySelectorAll("td")).map(td => ({
+        text: td.textContent.trim(),
+        html: td.innerHTML
+      }));
       return Object.fromEntries(headers.map((key, i) => [key, cells[i]]));
     });
   }
@@ -64,13 +67,13 @@ export function makeTableSortable(table, options = {}) {
     }
 
     const isNumeric = data.every(row => {
-      const val = row[column];
+      const val = row[column].text;
       return val !== "" && !isNaN(Number(val));
     });
 
     return [...data].sort((a, b) => {
-      const aVal = isNumeric ? Number(a[column]) : String(a[column]);
-      const bVal = isNumeric ? Number(b[column]) : String(b[column]);
+      const aVal = isNumeric ? Number(a[column].text) : String(a[column].text);
+      const bVal = isNumeric ? Number(b[column].text) : String(b[column].text);
 
       if (isNumeric) {
         return direction === "asc" ? aVal - bVal : bVal - aVal;
