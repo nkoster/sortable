@@ -33,12 +33,15 @@ export function makeTableSortable(table, options = {}) {
   function renderTable(data) {
     const tbody = table.querySelector("tbody");
     tbody.innerHTML = "";
-
     data.forEach(rowData => {
       const row = document.createElement("tr");
       headers.forEach(header => {
         const td = document.createElement("td");
-        td.innerHTML = rowData[header];
+        const cellText = rowData[header].text;
+        td.innerHTML = rowData[header].html;
+        if (cellText !== "" && !isNaN(Number(cellText))) {
+          td.classList.add("text-align-right");
+        }
         row.appendChild(td);
       });
       tbody.appendChild(row);
