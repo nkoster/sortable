@@ -19,7 +19,7 @@ Lightweight JavaScript module to make any HTML `<table>` sortable by clicking co
 ## 🚀 Installation
 
 ```bash
-npm install sortable-lite
+npm i sortable-lite
 ```
 
 ## 🧪 Usage
@@ -39,8 +39,8 @@ This adds sort arrows and basic styling. You can override or extend it as needed
 <table class="sortable-table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Score</th>
+      <th class="sorted-default">Name</th>
+      <th class="sorted-default">Score</th>
     </tr>
   </thead>
   <tbody>
@@ -54,16 +54,16 @@ This adds sort arrows and basic styling. You can override or extend it as needed
   import { makeTableSortable } from 'sortable-lite';
   import 'sortable-lite/sortable-table.css';
 
-  makeTableSortable(document.querySelector('table.sortable-table'));
+  makeTableSortable(document.querySelector('table.sortable-table'), { allowUnsorted: true });
 </script>
 ```
 
 ## 🔧 Features
 
-- ✅ Clickable headers toggle sort direction: none → ascending → descending
+- ✅ Clickable headers toggle sort direction: none (configurable) → ascending → descending
 - ✅ Works on both string and numeric values
 - ✅ Locale-aware string sorting (nl, case-insensitive)
-- ✅ Keeps original row order when unsorted
+- ✅ Allows for keeping original row order when unsorted (configurable)
 
 ## 📦 CDN Usage (optional)
 
@@ -73,7 +73,7 @@ Don’t want to install via NPM? Use it via jsDelivr:
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sortable-lite/sortable-table.css">
 <script type="module">
   import { makeTableSortable } from 'https://cdn.jsdelivr.net/npm/sortable-lite/index.js';
-  makeTableSortable(document.querySelector('table.sortable-table'));
+  makeTableSortable(document.querySelector('table.sortable-table'), { allowUnsorted: true /* or false! */ });
 </script>
 ```
 
