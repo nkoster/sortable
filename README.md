@@ -74,7 +74,7 @@ makeTableSortable(document.querySelector('table.sortable-table'), {
 - ✅ Works on both string and numeric values
 - ✅ Allows for keeping original row order when unsorted (configurable)
 - ✅ Locale-aware string sorting (configurable, case-insensitive)
-- ✅ Configurable string sorting behavior, "base", "accent", "case" and "variant". Read Array.sort() docs
+- ✅ Configurable string sorting behavior: "base", "accent", "case" and "variant". Read Array.sort() docs
 
 ## 📦 CDN Usage (optional)
 
