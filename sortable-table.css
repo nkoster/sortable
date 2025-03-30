@@ -16,7 +16,7 @@
 	position: relative;
 }
 .sortable-table thead th.sorted-default::after {
-	content: url(/images/symb_default.gif);
+	content: url(images/symb_default.gif);
 	position: absolute;
 	right: 0;
 	top: 50%;
@@ -24,7 +24,7 @@
 	display: inline-block;
 }
 .sortable-table thead th.sorted-asc::after {
-	content: url(/images/symb_up.gif);
+	content: url(images/symb_up.gif);
 	position: absolute;
 	right: 0;
 	top: 44%;
@@ -32,7 +32,7 @@
 	display: inline-block;
 }
 .sortable-table thead th.sorted-desc::after {
-	content: url(/images/symb_down.gif);
+	content: url(images/symb_down.gif);
 	position: absolute;
 	right: 0;
 	top: 44%;
