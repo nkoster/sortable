@@ -1,6 +1,10 @@
 export function makeTableSortable(table, options = {}) {
 
   const allowUnsorted = options.allowUnsorted === true;
+  const sortStringLocale = options.sortStringLocale || "en";
+  const sortStringBase = ["base", "accent", "case", "variant"].includes(options.sortStringBase)
+    ? options.sortStringBase
+    : "base";
 
   const headers = Array.from(table.querySelectorAll("thead th"))
     .map(th => th.textContent.trim());
@@ -82,8 +86,8 @@ export function makeTableSortable(table, options = {}) {
         return direction === "asc" ? aVal - bVal : bVal - aVal;
       } else {
         return direction === "asc"
-          ? aVal.localeCompare(bVal, "nl", { sensitivity: "base" })
-          : bVal.localeCompare(aVal, "nl", { sensitivity: "base" });
+          ? aVal.localeCompare(bVal, sortStringLocale, { sensitivity: sortStringBase })
+          : bVal.localeCompare(aVal, sortStringLocale, { sensitivity: "base" });
       }
     });
 

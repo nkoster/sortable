@@ -21,7 +21,9 @@
 </table>
 <script type="module">
   import { makeTableSortable } from './index.js';
-  makeTableSortable(document.querySelector('table.sortable-table'), { allowUnsorted: true });
+  makeTableSortable(document.querySelector('table.sortable-table'), {
+    allowUnsorted: true, sortStringLocale: "nl", sortStringBase: "base"
+  });
 </script>
 </body>
 </html>

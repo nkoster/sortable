@@ -58,12 +58,23 @@ This adds sort arrows and basic styling. You can override or extend it as needed
 </script>
 ```
 
+Configuration options:
+
+```javascript
+makeTableSortable(document.querySelector('table.sortable-table'), {
+  allowUnsorted: true,
+  sortStringLocale: 'nl',
+  sortStringBase: "base" // Allowed: "base", "accent", "case" and "variant". Check Array.sort() docs.
+});
+```
+
 ## 🔧 Features
 
 - ✅ Clickable headers toggle sort direction: none (configurable) → ascending → descending
 - ✅ Works on both string and numeric values
-- ✅ Locale-aware string sorting (nl, case-insensitive)
 - ✅ Allows for keeping original row order when unsorted (configurable)
+- ✅ Locale-aware string sorting (configurable, case-insensitive)
+- ✅ Configurable string sorting behavior, "base", "accent", "case" and "variant". Read Array.sort() docs
 
 ## 📦 CDN Usage (optional)
 
@@ -73,7 +84,7 @@ Don’t want to install via NPM? Use it via jsDelivr:
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sortable-lite/sortable-table.css">
 <script type="module">
   import { makeTableSortable } from 'https://cdn.jsdelivr.net/npm/sortable-lite/index.js';
-  makeTableSortable(document.querySelector('table.sortable-table'), { allowUnsorted: true /* or false! */ });
+  makeTableSortable(document.querySelector('table.sortable-table'));
 </script>
 ```
 
