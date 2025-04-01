@@ -87,7 +87,7 @@ export function makeTableSortable(table, options = {}) {
       } else {
         return direction === "asc"
           ? aVal.localeCompare(bVal, sortStringLocale, { sensitivity: sortStringBase })
-          : bVal.localeCompare(aVal, sortStringLocale, { sensitivity: "base" });
+          : bVal.localeCompare(aVal, sortStringLocale, { sensitivity: sortStringBase });
       }
     });
 
